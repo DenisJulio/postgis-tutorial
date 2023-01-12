@@ -1,16 +1,8 @@
 version: '3'
 services:
-  postgres:
-    image: postgis/postgis:15-3.3
-    environment:
-      POSTGRES_USER: denis
-      POSTGRES_PASSWORD: denis1234
-    volumes:
-      - postgis-tutorial-data:/var/lib/postgresql/data
-    ports:
-      - 5401:5432
   pg-admin:
     image: dpage/pgadmin4
+    network_mode: host
     ports:
       - 80:80
     environment:
@@ -20,5 +12,4 @@ services:
       - pgadmin-vol:/var/lib/pgadmin
 
 volumes:
-  postgis-tutorial-data:
   pgadmin-vol:
